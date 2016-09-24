@@ -26,7 +26,8 @@
 		75421F5F1B6C5D1400DB1EF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75421F5E1B6C5D1400DB1EF4 /* MainViewController.swift */; };
 		75421F611B6C60EB00DB1EF4 /* UIname.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75421F601B6C60EB00DB1EF4 /* UIname.plist */; };
 		757DA6C41C4220BA0063473D /* SearchDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */; };
-		75E857221C3D03E2009FB201 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E857211C3D03E2009FB201 /* SearchViewController.swift */; };
+		75E52C071D96604C0085F3E5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E52C061D96604C0085F3E5 /* SearchViewController.swift */; };
+		75E52C091D9660A80085F3E5 /* ScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,15 +57,16 @@
 		7528A0A21AD2283D00C015EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7528A0A31AD2283D00C015EF /* UISwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwiftTests.swift; sourceTree = "<group>"; };
 		7528A0AD1AD2285A00C015EF /* UIPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = UIPlayground.playground; sourceTree = "<group>"; };
-		7528A0AE1AD2507F00C015EF /* buttonImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buttonImage.jpg; sourceTree = "<group>"; };
+		7528A0AE1AD2507F00C015EF /* buttonImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = buttonImage.jpg; path = ../buttonImage.jpg; sourceTree = "<group>"; };
 		752B66971B7F778C00B81696 /* DatePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickViewController.swift; sourceTree = "<group>"; };
-		753060591AD9758E005D86E7 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
-		7530605A1AD9758E005D86E7 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		7530605B1AD9758E005D86E7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		753060591AD9758E005D86E7 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 0.jpg; path = ../0.jpg; sourceTree = "<group>"; };
+		7530605A1AD9758E005D86E7 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = ../1.jpg; sourceTree = "<group>"; };
+		7530605B1AD9758E005D86E7 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = ../2.jpg; sourceTree = "<group>"; };
 		75421F5E1B6C5D1400DB1EF4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		75421F601B6C60EB00DB1EF4 /* UIname.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UIname.plist; sourceTree = "<group>"; };
 		757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayViewController.swift; sourceTree = "<group>"; };
-		75E857211C3D03E2009FB201 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
+		75E52C061D96604C0085F3E5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,10 @@
 		75264AC11B80708B00C29D17 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				7528A0AE1AD2507F00C015EF /* buttonImage.jpg */,
+				753060591AD9758E005D86E7 /* 0.jpg */,
+				7530605A1AD9758E005D86E7 /* 1.jpg */,
+				7530605B1AD9758E005D86E7 /* 2.jpg */,
 				75264AC21B80708B00C29D17 /* Back.png */,
 				75264AC31B80708B00C29D17 /* Cancle.png */,
 				75264AC41B80708B00C29D17 /* Forward.png */,
@@ -118,18 +124,15 @@
 			isa = PBXGroup;
 			children = (
 				75264AC11B80708B00C29D17 /* image */,
-				7528A0AE1AD2507F00C015EF /* buttonImage.jpg */,
-				753060591AD9758E005D86E7 /* 0.jpg */,
-				7530605A1AD9758E005D86E7 /* 1.jpg */,
-				7530605B1AD9758E005D86E7 /* 2.jpg */,
 				7528A0AD1AD2285A00C015EF /* UIPlayground.playground */,
 				7528A08D1AD2283C00C015EF /* AppDelegate.swift */,
 				7528A08F1AD2283C00C015EF /* ViewController.swift */,
 				75421F5E1B6C5D1400DB1EF4 /* MainViewController.swift */,
 				752B66971B7F778C00B81696 /* DatePickViewController.swift */,
 				75264ABC1B80698200C29D17 /* webViewViewController.swift */,
-				75E857211C3D03E2009FB201 /* SearchViewController.swift */,
+				75E52C061D96604C0085F3E5 /* SearchViewController.swift */,
 				757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */,
+				75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */,
 				7528A0941AD2283C00C015EF /* Images.xcassets */,
 				7528A0961AD2283C00C015EF /* LaunchScreen.xib */,
 				75264ABE1B806B3A00C29D17 /* Main.storyboard */,
@@ -274,8 +277,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75E857221C3D03E2009FB201 /* SearchViewController.swift in Sources */,
 				75421F5F1B6C5D1400DB1EF4 /* MainViewController.swift in Sources */,
+				75E52C071D96604C0085F3E5 /* SearchViewController.swift in Sources */,
+				75E52C091D9660A80085F3E5 /* ScrollViewViewController.swift in Sources */,
 				757DA6C41C4220BA0063473D /* SearchDisplayViewController.swift in Sources */,
 				7528A0901AD2283C00C015EF /* ViewController.swift in Sources */,
 				75264ABD1B80698200C29D17 /* webViewViewController.swift in Sources */,
