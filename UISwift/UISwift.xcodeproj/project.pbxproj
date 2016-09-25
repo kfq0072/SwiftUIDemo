@@ -26,8 +26,13 @@
 		75421F5F1B6C5D1400DB1EF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75421F5E1B6C5D1400DB1EF4 /* MainViewController.swift */; };
 		75421F611B6C60EB00DB1EF4 /* UIname.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75421F601B6C60EB00DB1EF4 /* UIname.plist */; };
 		757DA6C41C4220BA0063473D /* SearchDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */; };
+		759183D41D979A92001854A1 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759183D31D979A92001854A1 /* TabBarViewController.swift */; };
 		75E52C071D96604C0085F3E5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E52C061D96604C0085F3E5 /* SearchViewController.swift */; };
 		75E52C091D9660A80085F3E5 /* ScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */; };
+		75E52C0B1D967B620085F3E5 /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E52C0A1D967B610085F3E5 /* 1@2x.png */; };
+		75E52C0D1D967DB00085F3E5 /* CoreMotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E52C0C1D967DB00085F3E5 /* CoreMotionViewController.swift */; };
+		75E52C0F1D967DD50085F3E5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75E52C0E1D967DD50085F3E5 /* CoreMotion.framework */; };
+		75E52C111D967EA90085F3E5 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 75E52C101D967EA90085F3E5 /* ball.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +70,13 @@
 		75421F5E1B6C5D1400DB1EF4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		75421F601B6C60EB00DB1EF4 /* UIname.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UIname.plist; sourceTree = "<group>"; };
 		757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDisplayViewController.swift; sourceTree = "<group>"; };
+		759183D31D979A92001854A1 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		75E52C061D96604C0085F3E5 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewViewController.swift; sourceTree = "<group>"; };
+		75E52C0A1D967B610085F3E5 /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		75E52C0C1D967DB00085F3E5 /* CoreMotionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreMotionViewController.swift; sourceTree = "<group>"; };
+		75E52C0E1D967DD50085F3E5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		75E52C101D967EA90085F3E5 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E52C0F1D967DD50085F3E5 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +101,8 @@
 		75264AC11B80708B00C29D17 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				75E52C101D967EA90085F3E5 /* ball.png */,
+				75E52C0A1D967B610085F3E5 /* 1@2x.png */,
 				7528A0AE1AD2507F00C015EF /* buttonImage.jpg */,
 				753060591AD9758E005D86E7 /* 0.jpg */,
 				7530605A1AD9758E005D86E7 /* 1.jpg */,
@@ -105,6 +118,7 @@
 		7528A07F1AD2283C00C015EF = {
 			isa = PBXGroup;
 			children = (
+				75E52C0E1D967DD50085F3E5 /* CoreMotion.framework */,
 				7528A08A1AD2283C00C015EF /* UISwift */,
 				7528A0A01AD2283D00C015EF /* UISwiftTests */,
 				7528A0891AD2283C00C015EF /* Products */,
@@ -133,6 +147,8 @@
 				75E52C061D96604C0085F3E5 /* SearchViewController.swift */,
 				757DA6C31C4220BA0063473D /* SearchDisplayViewController.swift */,
 				75E52C081D9660A80085F3E5 /* ScrollViewViewController.swift */,
+				75E52C0C1D967DB00085F3E5 /* CoreMotionViewController.swift */,
+				759183D31D979A92001854A1 /* TabBarViewController.swift */,
 				7528A0941AD2283C00C015EF /* Images.xcassets */,
 				7528A0961AD2283C00C015EF /* LaunchScreen.xib */,
 				75264ABE1B806B3A00C29D17 /* Main.storyboard */,
@@ -254,11 +270,13 @@
 				7530605E1AD9758E005D86E7 /* 2.jpg in Resources */,
 				7530605C1AD9758E005D86E7 /* 0.jpg in Resources */,
 				75264AC01B806B3A00C29D17 /* Main.storyboard in Resources */,
+				75E52C111D967EA90085F3E5 /* ball.png in Resources */,
 				7528A0981AD2283C00C015EF /* LaunchScreen.xib in Resources */,
 				75421F611B6C60EB00DB1EF4 /* UIname.plist in Resources */,
 				75264AC71B80708B00C29D17 /* Cancle.png in Resources */,
 				75264AC81B80708B00C29D17 /* Forward.png in Resources */,
 				7530605D1AD9758E005D86E7 /* 1.jpg in Resources */,
+				75E52C0B1D967B620085F3E5 /* 1@2x.png in Resources */,
 				7528A0951AD2283C00C015EF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,11 +297,13 @@
 			files = (
 				75421F5F1B6C5D1400DB1EF4 /* MainViewController.swift in Sources */,
 				75E52C071D96604C0085F3E5 /* SearchViewController.swift in Sources */,
+				75E52C0D1D967DB00085F3E5 /* CoreMotionViewController.swift in Sources */,
 				75E52C091D9660A80085F3E5 /* ScrollViewViewController.swift in Sources */,
 				757DA6C41C4220BA0063473D /* SearchDisplayViewController.swift in Sources */,
 				7528A0901AD2283C00C015EF /* ViewController.swift in Sources */,
 				75264ABD1B80698200C29D17 /* webViewViewController.swift in Sources */,
 				7528A08E1AD2283C00C015EF /* AppDelegate.swift in Sources */,
+				759183D41D979A92001854A1 /* TabBarViewController.swift in Sources */,
 				752B66981B7F778C00B81696 /* DatePickViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
