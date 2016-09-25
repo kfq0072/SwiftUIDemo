@@ -27,7 +27,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let dic = NSMutableDictionary(contentsOfFile: path!)
         print(dic)
 
-        self.uiNameArray = ["base","datePick","webView","searchVC","SearchDisplay","scrollView","coreMotion","tabBar","tabBarController"]
+        self.uiNameArray = ["base","datePick","webView","searchVC",
+            "SearchDisplay","scrollView","coreMotion","tabBar",
+            "tabBarController","collectVC"]
 
         self.mainTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
         
@@ -85,7 +87,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             baseVCName = "tabBarVC"
         case 8:
             baseVCName = "tabBarController"
-            
+        case 9:
+            baseVCName = "collectVC"
         default:
              baseVCName = "baseVC"
         }
