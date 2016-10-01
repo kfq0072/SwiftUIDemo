@@ -22,7 +22,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         mainTableView!.dataSource = self
         
         //初始化数据，这一次数据，我们放在属性列表文件里
-        let path = NSBundle.mainBundle().pathForResource("UIname.plist", ofType:nil)
+        let path = Bundle.main.path(forResource: "UIname.plist", ofType:nil)
         print(path)
         let dic = NSMutableDictionary(contentsOfFile: path!)
         print(dic)
@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             "SearchDisplay","scrollView","coreMotion","tabBar",
             "tabBarController","collectVC"]
 
-        self.mainTableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
+        self.mainTableView!.register(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
         
     }
 
@@ -39,23 +39,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
 
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65.0
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.uiNameArray!.count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identify="swiftCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(identify, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identify, for: indexPath)
         
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel?.text = self.uiNameArray![indexPath.row]
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.textLabel?.text = self.uiNameArray![(indexPath as NSIndexPath).row]
 //        cell.backgroundColor = UIColor.yellowColor()
 //        let imageName = NSString(format: "%ld.jpg", indexPath.row)
 //        cell.imageView?.image = UIImage(named: imageName as String)
@@ -63,11 +63,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView .deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView .deselectRow(at: indexPath, animated: true)
         var baseVC:UIViewController?
         var baseVCName:String!
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
              baseVCName = "baseVC"
            
@@ -92,7 +92,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         default:
              baseVCName = "baseVC"
         }
-        baseVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(baseVCName)
+        baseVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: baseVCName)
         
         self.navigationController?.pushViewController(baseVC!, animated: true)
         

@@ -19,16 +19,16 @@ class CoreMotionViewController: UIViewController {
         super.viewDidLoad()
         let image:UIImage = UIImage(named: "ball")!
         ballView = UIImageView(image: image)
-        ballView.frame = CGRectMake(0, 0, 50, 50)
+        ballView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         ballView.center = self.view.center
         self.view.addSubview(ballView)
         
-        motionManager.accelerometerUpdateInterval = 1%60
+        motionManager.accelerometerUpdateInterval = 1.truncatingRemainder(dividingBy: 60)
         
-        if  motionManager.accelerometerAvailable {
-            let queue = NSOperationQueue.currentQueue()
+        if  motionManager.isAccelerometerAvailable {
+            let queue = OperationQueue.current
             
-            motionManager.startAccelerometerUpdatesToQueue(queue!, withHandler: { (acData:CMAccelerometerData?, error:NSError?) -> Void in
+            motionManager.startAccelerometerUpdates(to: queue!, withHandler: { (acData:CMAccelerometerData?, error:NSError?) -> Void in
                 self.speedX += (acData?.acceleration.x)!
                 self.speedY += (acData?.acceleration.y)!
                 
@@ -52,13 +52,13 @@ class CoreMotionViewController: UIViewController {
                     self.speedY *= -0.4
                 }
                 
-                self.ballView.center = CGPointMake(posX, posY)
+                self.ballView.center = CGPoint(x: posX, y: posY)
                 
-            })
+            } as! CMAccelerometerHandler)
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         motionManager .stopAccelerometerUpdates()
     }

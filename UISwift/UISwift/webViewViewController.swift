@@ -20,26 +20,26 @@ class webViewViewController: UIViewController,UISearchBarDelegate,UIWebViewDeleg
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBAction func backBtn(sender: AnyObject) {
+    @IBAction func backBtn(_ sender: AnyObject) {
         
         webView.goBack()
     }
     
-    @IBAction func refreshBtn(sender: AnyObject) {
+    @IBAction func refreshBtn(_ sender: AnyObject) {
         webView.reload()
     }
-    @IBAction func forwardBtn(sender: AnyObject) {
+    @IBAction func forwardBtn(_ sender: AnyObject) {
         webView.goForward()
     }
     
-    @IBAction func cancleBtn(sender: AnyObject) {
+    @IBAction func cancleBtn(_ sender: AnyObject) {
         webView.stopLoading()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity.hidden = true
+        activity.isHidden = true
         searchBar.delegate = self
-        searchBar.barTintColor = UIColor.whiteColor()
+        searchBar.barTintColor = UIColor.white
         webView.delegate = self
     }
 
@@ -47,37 +47,37 @@ class webViewViewController: UIViewController,UISearchBarDelegate,UIWebViewDeleg
         super.didReceiveMemoryWarning()
 
     }
-    func loadUrl(url:String) {
-        let urlObj = NSURL(string: url)
-        let request = NSURLRequest(URL: urlObj!)
+    func loadUrl(_ url:String) {
+        let urlObj = URL(string: url)
+        let request = URLRequest(url: urlObj!)
         webView.loadRequest(request)
         
     }
     //MARK:- UISearchBarDelegate
-    func webViewDidStartLoad(webView: UIWebView) {
-        activity.hidden = false
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        activity.isHidden = false
         activity.startAnimating()
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         activity.stopAnimating()
-        activity.hidden = true
+        activity.isHidden = true
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
        
             activity.stopAnimating()
-            activity.hidden = true
+            activity.isHidden = true
             let alertView = UIAlertView()
             alertView.title = "warming"
-            alertView.message = error!.localizedDescription
-            alertView.addButtonWithTitle("Try again")
+            alertView.message = error.localizedDescription
+            alertView.addButton(withTitle: "Try again")
             alertView.show()
         
     }
     
     //MARK:- UISearchBarDelegate
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         urlStr = urlHead + searchBar.text! + urlTail
         loadUrl(urlStr)

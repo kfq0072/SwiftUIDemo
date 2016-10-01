@@ -9,5 +9,5 @@
 import UIKit
 let STATUSBAR_HEIGHT = 20.0
 let NAVGATIONBAR_HEIGHT = 44.0
-let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.height
-let SCREEN_WIDTH = UIScreen.mainScreen().bounds.width
+let SCREEN_HEIGHT = UIScreen.main.bounds.height
+let SCREEN_WIDTH = UIScreen.main.bounds.width

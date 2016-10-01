@@ -21,7 +21,7 @@ class SearchDisplayViewController: UIViewController {
         self.ctrlsel = self.ctrls
         
         //register tableviewcell
-        self.searchDisplay.searchResultsTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: identify)
+        self.searchDisplay.searchResultsTableView.register(UITableViewCell.self, forCellReuseIdentifier: identify)
 
         initSearchBar()
         // Do any additional setup after loading the view.
@@ -31,7 +31,7 @@ class SearchDisplayViewController: UIViewController {
     func initSearchBar() {
         self.searchDisplay.searchBar.placeholder = "输入搜索信息"
         self.searchDisplay.searchBar.prompt = "搜索组件名称"
-        self.searchDisplay.searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        self.searchDisplay.searchBar.searchBarStyle = UISearchBarStyle.minimal
         self.searchDisplay.searchBar.showsScopeBar = true
         self.searchDisplay.searchBar.scopeButtonTitles = ["全部","初级","高级"]
         print("\(self.searchDisplay.searchResultsTitle)")
@@ -43,35 +43,35 @@ class SearchDisplayViewController: UIViewController {
     }
     
     // MARK: - tableviewDataSource
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView .dequeueReusableCellWithIdentifier(identify, forIndexPath: indexPath)
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel!.text = self.ctrlsel[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView .dequeueReusableCell(withIdentifier: identify, for: indexPath)
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.textLabel!.text = self.ctrlsel[(indexPath as NSIndexPath).row]
         print("0000000")
         print(cell.textLabel!.text)
         return cell;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.ctrlsel.count;
     }
     
     // MARK: - searchDisplayDelegate
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-       self.searchText = searchText.lowercaseString
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       self.searchText = searchText.lowercased()
         print("search")
         print(self.searchText)
         searchCtrls(0)
     }
     
     //分段
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print(selectedScope)
         searchCtrls(selectedScope)
     }
     
     //
-    func searchCtrls(scope:Int) {
+    func searchCtrls(_ scope:Int) {
         if self.searchText == "" {
             self.ctrlsel = self.ctrls
 //            self.setEditing(true, animated: true)
@@ -79,7 +79,7 @@ class SearchDisplayViewController: UIViewController {
         }else {
             self.ctrlsel = []
             for ctrl in self.ctrls{
-                let lc = ctrl.lowercaseString
+                let lc = ctrl.lowercased()
                 if lc.hasPrefix(self.searchText) {
                     if ((scope == 0) || (scope == 1 && lc.hasSuffix("初级")) || (scope == 2 && lc.hasSuffix("高级"))) {
                         self.ctrlsel.append(ctrl)

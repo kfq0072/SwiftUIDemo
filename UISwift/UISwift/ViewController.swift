@@ -13,7 +13,7 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
     var actSheet : UIActionSheet!
     var pickerView : UIPickerView!
     
-    func UIRect(param:UIView)->CGFloat{
+    func UIRect(_ param:UIView)->CGFloat{
         var mySize:CGFloat!
         mySize = param.frame.size.height + param.frame.origin.y + UIRectY()
 
@@ -29,7 +29,7 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
     }
     //获取屏幕rect
     func screenBounds()->CGRect{
-        return UIScreen.mainScreen().bounds
+        return UIScreen.main.bounds
     }
     
     override func viewDidLoad() {
@@ -37,22 +37,22 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         
         self.title = "BaseUI"
         
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target:self , action: Selector("carmaFunc:"))
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.camera, target:self , action: #selector(ViewController.carmaFunc(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         /**
             UIlabel
         **/
-        let label = UILabel(frame: CGRectMake(UIRectX(), UIRectY()+40, screenBounds().width/2,30.0))
+        let label = UILabel(frame: CGRect(x: UIRectX(), y: UIRectY()+40, width: screenBounds().width/2,height: 30.0))
         label.text="i am a label"
-        label.backgroundColor = UIColor.orangeColor()
-        label.textAlignment = NSTextAlignment.Center
-        label.font = UIFont.systemFontOfSize(20)
-        label.textColor = UIColor.blackColor()
-        label.shadowColor = UIColor.grayColor()
-        label.shadowOffset = CGSizeMake(-20, 30)
+        label.backgroundColor = UIColor.orange
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = UIColor.black
+        label.shadowColor = UIColor.gray
+        label.shadowOffset = CGSize(width: -20, height: 30)
         //省略方式
-        label.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        label.lineBreakMode = NSLineBreakMode.byTruncatingTail
         
         //自动调整
 //        label.adjustsFontSizeToFitWidth = true;
@@ -65,26 +65,26 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         button = UIButton.init()
 //        let button :UIButton = UIButton.buttonWithType(UIButtonType.ContactAdd)as! UIButton;
 //        var button = UIButton(frame: CGRectMake(20, label.frame.size.height+20, label.frame.width, label.frame.size.height))
-        button.frame = CGRectMake(UIRectX(), UIRect(label), label.frame.width, 30.0);
-        button.setTitle("button", forState: UIControlState.Normal)
-        button.setTitle("触摸状态", forState: UIControlState.Highlighted)
-        button.setTitle("select", forState: UIControlState.Selected)
-        button.setTitleColor(UIColor.yellowColor(), forState: UIControlState.Highlighted);
-        button.setTitle("禁用状态", forState: UIControlState.Disabled)
+        button.frame = CGRect(x: UIRectX(), y: UIRect(label), width: label.frame.width, height: 30.0);
+        button.setTitle("button", for: UIControlState())
+        button.setTitle("触摸状态", for: UIControlState.highlighted)
+        button.setTitle("select", for: UIControlState.selected)
+        button.setTitleColor(UIColor.yellow, for: UIControlState.highlighted);
+        button.setTitle("禁用状态", for: UIControlState.disabled)
 //        button.setImage(UIImage(named:"0.jpg"), forState: UIControlState.Normal)
-        button.setBackgroundImage(UIImage(named:"buttonImage.jpg"),forState:.Normal)
-        button .addTarget(self, action:Selector("tapped:"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.setBackgroundImage(UIImage(named:"buttonImage.jpg"),for:UIControlState())
+        button .addTarget(self, action:#selector(ViewController.tapped(_:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(button)
         
         /**
             UItTextField
         **/
         
-        let textField = UITextField(frame: CGRectMake(10, UIRect(button), screenBounds().size.width/2, 30))
-        textField.borderStyle = UITextBorderStyle.RoundedRect
+        let textField = UITextField(frame: CGRect(x: 10, y: UIRect(button), width: screenBounds().size.width/2, height: 30))
+        textField.borderStyle = UITextBorderStyle.roundedRect
         self.view.addSubview(textField)
         textField.placeholder = "please in your name"
-        textField.returnKeyType = UIReturnKeyType.Go
+        textField.returnKeyType = UIReturnKeyType.go
         //代理
         textField.delegate = self;
         
@@ -92,7 +92,7 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         /**
             UISwitch
         **/
-        let mySwitch = UISwitch(frame: CGRectMake(10, UIRect(textField), 200, 20))
+        let mySwitch = UISwitch(frame: CGRect(x: 10, y: UIRect(textField), width: 200, height: 20))
         self.view.addSubview(mySwitch)
         
         
@@ -102,10 +102,10 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         let obj = UIImage(named: "buttonImage.jpg")
         let items = ["选项1", "选项2", "选项3"]
         let seg = UISegmentedControl(items: items)
-        seg.frame = CGRectMake(10, UIRect(mySwitch), screenBounds().width/3, 30)
+        seg.frame = CGRect(x: 10, y: UIRect(mySwitch), width: screenBounds().width/3, height: 30)
         seg.selectedSegmentIndex = 2
-        seg.setTitle("重新设置", forSegmentAtIndex: 1)
-        seg.setBackgroundImage(obj, forState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
+        seg.setTitle("重新设置", forSegmentAt: 1)
+        seg.setBackgroundImage(obj, for: UIControlState(), barMetrics: UIBarMetrics.default)
         self.view.addSubview(seg)
         
         
@@ -123,14 +123,14 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
             UISlider
         **/
         let img1 = UIImage(named:"Back.png")    //初始化图片
-        let slider = UISlider(frame: CGRectMake(10, UIRect(imageView), screenBounds().width/2, 20))
+        let slider = UISlider(frame: CGRect(x: 10, y: UIRect(imageView), width: screenBounds().width/2, height: 20))
         self.view.addSubview(slider)
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.value = 20
-        slider.maximumTrackTintColor = UIColor.redColor()
-        slider.minimumTrackTintColor = UIColor.greenColor()
-        slider.setThumbImage(img1, forState: UIControlState.Normal)
+        slider.maximumTrackTintColor = UIColor.red
+        slider.minimumTrackTintColor = UIColor.green
+        slider.setThumbImage(img1, for: UIControlState())
 //        slider.maximumValueImage = UIImage(named: "1.png")
 //        slider.minimumValueImage = UIImage(named: "2.png")
         
@@ -138,9 +138,9 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
             UIActionSheet
         **/
         actSheet = UIActionSheet()
-        actSheet.addButtonWithTitle("Cancel")
-        actSheet.addButtonWithTitle("action1")
-        actSheet.addButtonWithTitle("action2")
+        actSheet.addButton(withTitle: "Cancel")
+        actSheet.addButton(withTitle: "action1")
+        actSheet.addButton(withTitle: "action2")
         actSheet.cancelButtonIndex = 0
         actSheet.tag = 100
         actSheet.delegate = self
@@ -155,14 +155,14 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         pickerView.selectRow(0, inComponent: 0, animated: true)
         pickerView.selectRow(0, inComponent: 1, animated: true)
         pickerView.selectRow(0, inComponent: 2, animated: true)
-        pickerView.frame = CGRectMake(10, UIRect(slider), screenBounds().width-20, 80)
+        pickerView.frame = CGRect(x: 10, y: UIRect(slider), width: screenBounds().width-20, height: 80)
         self.view.addSubview(pickerView)
         
-        let pickButton = UIButton(frame: CGRectMake(10, UIRect(pickerView), screenBounds().width/2, 30))
-        pickButton.setTitle("choose", forState: UIControlState.Normal)
-        pickButton.addTarget(self, action: "pickChoose", forControlEvents: UIControlEvents.TouchUpInside)
+        let pickButton = UIButton(frame: CGRect(x: 10, y: UIRect(pickerView), width: screenBounds().width/2, height: 30))
+        pickButton.setTitle("choose", for: UIControlState())
+        pickButton.addTarget(self, action: #selector(ViewController.pickChoose), for: UIControlEvents.touchUpInside)
         self.view.addSubview(pickButton)
-        pickButton.backgroundColor = UIColor.redColor()
+        pickButton.backgroundColor = UIColor.red
         
         
     }
@@ -172,36 +172,36 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
         
     }
     
-    func carmaFunc(sender:NSObject){
+    func carmaFunc(_ sender:NSObject){
         print("//TODO:调用摄像头")
     }
     //MARK:- buttonMothed
-    func tapped(button:UIButton){
+    func tapped(_ button:UIButton){
         print("you did me\n")
-        print(button.titleForState(.Normal))
-        actSheet.showInView(self.view)
+        print(button.title(for: UIControlState()))
+        actSheet.show(in: self.view)
     }
     func pickChoose(){
         let alertView = UIAlertView()
         alertView.title = "you choose relsute:"
-        let myStr = "\(pickerView.selectedRowInComponent(0))"+"-"+"\(pickerView.selectedRowInComponent(1))"+"-"+"\(pickerView.selectedRowInComponent(2))"
+        let myStr = "\(pickerView.selectedRow(inComponent: 0))"+"-"+"\(pickerView.selectedRow(inComponent: 1))"+"-"+"\(pickerView.selectedRow(inComponent: 2))"
         alertView.message = myStr
-        alertView.addButtonWithTitle("OK")
-        alertView.addButtonWithTitle("Cancel")
-        alertView.addButtonWithTitle("Hi")
+        alertView.addButton(withTitle: "OK")
+        alertView.addButton(withTitle: "Cancel")
+        alertView.addButton(withTitle: "Hi")
         alertView.delegate = self
         alertView .show()
     }
     
     //MARK:- UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         print(textField.text)
         return true
     }
     
     //MARK:- UIActionSheetDelegate
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int){
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int){
         if actionSheet.tag == 100{
             let str : String = "\(buttonIndex)"//整型转字符串
             print("you tap: "+str)
@@ -210,19 +210,19 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
     
     //MARK:- UIPickerViewDataSource
     // returns the number of 'columns' to display.
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
     // returns the # of rows in each component..
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 8
     }
     //MARK:- UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 50.0
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("you choose row:"+"\(row) "+"compoent:"+"\(component)")
     }
     //显示文字
@@ -236,7 +236,7 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
 //        }
 //    }
     //显示UIView
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 
         let imageView2 = UIImageView()
         var image:UIImage!
@@ -248,7 +248,7 @@ class ViewController: UIViewController ,UITextFieldDelegate ,UIActionSheetDelega
     }
     
     //MARK:- UIAlertViewDelegate
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         print(buttonIndex)
     }
 

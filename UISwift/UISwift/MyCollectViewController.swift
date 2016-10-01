@@ -19,31 +19,31 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
         //设置cell的大小
         layout.itemSize = CGSize(width: SCREEN_WIDTH/2, height: SCREEN_HEIGHT/3)
         //滑动方向 默认方向是垂直
-        layout.scrollDirection = .Vertical
+        layout.scrollDirection = .vertical
         //每个Item之间最小的间距
         layout.minimumInteritemSpacing = 0
         //每行之间最小的间距  
         layout.minimumLineSpacing = 0
         
-        myCollectionView = UICollectionView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), collectionViewLayout: layout)
+        myCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT), collectionViewLayout: layout)
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
-        myCollectionView.backgroundColor = .whiteColor()
-        myCollectionView.registerNib(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
+//        myCollectionView.backgroundColor = U
+        myCollectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
         self.view.addSubview(myCollectionView)
     }
     
     //返回多少个组
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 2
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6;
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:MyCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as!MyCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:MyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as!MyCollectionViewCell
 //        let text = "HI"
         let name = "ball"
 //        cell.setupView(text, imageName: name)
@@ -60,7 +60,7 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
     /**
     Description:当点击某个Item之后的回应
     */
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("(\(indexPath.section),\(indexPath.row))")
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("(\((indexPath as NSIndexPath).section),\((indexPath as NSIndexPath).row))")
     }
 }

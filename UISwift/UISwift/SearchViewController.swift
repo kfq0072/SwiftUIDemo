@@ -23,37 +23,37 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
     override func viewDidLoad() {
         self.mySearchView.delegate = self
         self.mySearchView.placeholder = "please input your select"
-        self.mySearchView.searchBarStyle = UISearchBarStyle.Default
+        self.mySearchView.searchBarStyle = UISearchBarStyle.default
         self.ctrlsel = self.ctrls;
-        self.myTableView .registerClass(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
-        self.reGesRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapEdit:"))
+        self.myTableView .register(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
+        self.reGesRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.tapEdit(_:)))
         self.view.addGestureRecognizer(self.reGesRecognizer)
     }
     
     
     // MARK: - UITableViewDataSource
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identify = "swiftCell"
-        let cell:UITableViewCell = tableView .dequeueReusableCellWithIdentifier(identify, forIndexPath: indexPath)
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel?.text = self.ctrlsel[indexPath.row]
+        let cell:UITableViewCell = tableView .dequeueReusableCell(withIdentifier: identify, for: indexPath)
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.textLabel?.text = self.ctrlsel[(indexPath as NSIndexPath).row]
         
         
         return cell;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.ctrlsel.count;
     }
     // MARK: - UISearchBarDelegate
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             self.ctrlsel = self.ctrls
         }else {
             self.ctrlsel = []
             for ctrl in self.ctrls {
-                print(ctrl.lowercaseString)
+                print(ctrl.lowercased())
                 print(searchText)
                 print(self.ctrlsel)
 //                if ((ctrl.lowercaseString.hasPrefix(searchText)) || (searchText.lowercaseString.hasPrefix(ctrl))) {
@@ -64,7 +64,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
         self.myTableView.reloadData()
     }
     // MARK: - 
-    func tapEdit(sender:NSObject) {
+    func tapEdit(_ sender:NSObject) {
         self.view.endEditing(true)
     }
 }

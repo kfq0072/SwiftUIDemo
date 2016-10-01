@@ -18,7 +18,7 @@ class TabBarViewController: UIViewController,UITabBarDelegate {
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.translucent = false;
         
-        tabBar = UITabBar(frame: CGRectMake(0,CGRectGetHeight(self.view.bounds)-49,CGRectGetWidth(self.view.bounds),49))
+        tabBar = UITabBar(frame: CGRect(x: 0,y: self.view.bounds.height-49,width: self.view.bounds.width,height: 49))
         var items :[UITabBarItem] = []
         for tab in tabs {
             let tabBarItem = UITabBarItem()
@@ -30,21 +30,21 @@ class TabBarViewController: UIViewController,UITabBarDelegate {
         tabBar.delegate = self
         self.view.addSubview(tabBar)
         
-        contentView = UIView(frame: CGRectMake(0,0,CGRectGetWidth(self.view.bounds),CGRectGetHeight(self.view.bounds)-49))
+        contentView = UIView(frame: CGRect(x: 0,y: 0,width: self.view.bounds.width,height: self.view.bounds.height-49))
         self.view.addSubview(contentView)
-        let lb1 = UILabel(frame:  CGRectMake(100,200,100,100))
+        let lb1 = UILabel(frame:  CGRect(x: 100,y: 200,width: 100,height: 100))
         lb1.tag = 1
         lb1.text = tabs[0]
         contentView.addSubview(lb1)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        self.navigationController?.navigationBar.translucent = true;
+        self.navigationController?.navigationBar.isTranslucent = true;
     }
     
     
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         (contentView.viewWithTag(1) as! UILabel).text = item.title
     }
 }

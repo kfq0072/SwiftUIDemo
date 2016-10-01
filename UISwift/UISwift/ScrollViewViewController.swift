@@ -9,7 +9,7 @@
 import UIKit
 
 class ScrollViewViewController: UIViewController {
-    var timer:NSTimer!
+    var timer:Timer!
     var kk:Int = 0
     var myScrollView:UIScrollView!
     var pageWidth:CGFloat!
@@ -21,12 +21,12 @@ class ScrollViewViewController: UIViewController {
     }
     
     func screenBounds()->CGRect{
-        return UIScreen.mainScreen().bounds
+        return UIScreen.main.bounds
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.translucent = false;
+        self.navigationController?.navigationBar.isTranslucent = false;
         /**
         UIScrollView
         **/
@@ -44,9 +44,9 @@ class ScrollViewViewController: UIViewController {
             
             let scrollView = UIScrollView()
             //            scrollView.backgroundColor = UIColor.redColor()
-            scrollView.frame = CGRectMake(0, 0, pageWidth, pageHeight)
-            scrollView.contentSize = CGSizeMake(pageWidth*tempNumOfPage, pageHeight)
-            scrollView.pagingEnabled = true
+            scrollView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+            scrollView.contentSize = CGSize(width: pageWidth*tempNumOfPage, height: pageHeight)
+            scrollView.isPagingEnabled = true
             scrollView.showsHorizontalScrollIndicator = false
             scrollView.showsVerticalScrollIndicator = false
             scrollView.scrollsToTop = false
@@ -54,7 +54,7 @@ class ScrollViewViewController: UIViewController {
                 print(index, terminator: "") //print "01234"
                 let pageVC = pageViewController(number: (index+1))
                 let indexFloat :CGFloat = CGFloat(index)
-                pageVC.view.frame = CGRectMake(pageWidth*indexFloat, 0.0, pageWidth, pageHeight)
+                pageVC.view.frame = CGRect(x: pageWidth*indexFloat, y: 0.0, width: pageWidth, height: pageHeight)
                 scrollView.addSubview(pageVC.view)
             }
             myScrollView = scrollView
@@ -64,9 +64,9 @@ class ScrollViewViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        self.navigationController?.navigationBar.translucent = true;
+        self.navigationController?.navigationBar.isTranslucent = true;
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,22 +77,22 @@ class ScrollViewViewController: UIViewController {
     // MARK: - NSTime init
     func initTimer(){
         if (timer == nil) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector:"timerFunction", userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector:#selector(ScrollViewViewController.timerFunction), userInfo: nil, repeats: true)
         }
     }
     
     // MARK: - timerFunction
     func timerFunction(){
-        kk++
+        kk += 1
         print("\(kk)")
         if (kk < numOfPage) {
             let num:CGFloat = (CGFloat)(kk)
-            let offset = CGPointMake(pageWidth * num, 0)
+            let offset = CGPoint(x: pageWidth * num, y: 0)
             myScrollView.setContentOffset(offset, animated: true)
         }else {
             //循环播放
             kk = 0
-            myScrollView.setContentOffset(CGPointMake(0, 0), animated: false)
+            myScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             
             //倒叙播放
             
@@ -103,9 +103,9 @@ class ScrollViewViewController: UIViewController {
 class pageViewController: UIViewController {
     var number : Int!
     let colorMap = [
-        1:UIColor.orangeColor(),
-        2:UIColor.redColor(),
-        3:UIColor.purpleColor()
+        1:UIColor.orange,
+        2:UIColor.red,
+        3:UIColor.purple
     ]
     init(number initNumber:Int) {
         self.number = initNumber
@@ -119,10 +119,10 @@ class pageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let numberLabel = UILabel(frame: CGRectMake(0, 0, 100, 100))
+        let numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         numberLabel.text = "第"+"\(number)"+"页"
         numberLabel.center = self.view.center
-        numberLabel.font = UIFont.systemFontOfSize(23)
+        numberLabel.font = UIFont.systemFont(ofSize: 23)
         self.view.addSubview(numberLabel)
         self.view.backgroundColor = colorMap[number]
         //        self.view.backgroundColor = UIColor.orangeColor()
