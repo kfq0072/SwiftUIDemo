@@ -29,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         self.uiNameArray = ["base","datePick","webView","searchVC",
             "SearchDisplay","scrollView","coreMotion","tabBar",
-            "tabBarController","collectVC"]
+            "tabBarController","collectView"]
 
         self.mainTableView!.register(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
         

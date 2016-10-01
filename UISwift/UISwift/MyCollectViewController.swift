@@ -28,7 +28,7 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
         myCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT), collectionViewLayout: layout)
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
-//        myCollectionView.backgroundColor = U
+        myCollectionView.backgroundColor = UIColor.orange;
         myCollectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
         self.view.addSubview(myCollectionView)
     }

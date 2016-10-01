@@ -9,7 +9,8 @@
 import UIKit
 
 class MyCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var myLabel: UILabel!
+    
+    
     @IBOutlet weak var myImageView: UIImageView!
     internal func setupView(_ lableText:String,imageName:String)->Void {
 //        myLabel.text = lableText
