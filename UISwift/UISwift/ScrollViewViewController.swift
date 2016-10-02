@@ -65,6 +65,8 @@ class ScrollViewViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
+        timer.fireDate = NSDate.distantFuture
+        timer = nil
         self.navigationController?.navigationBar.isTranslucent = true;
     }
     
