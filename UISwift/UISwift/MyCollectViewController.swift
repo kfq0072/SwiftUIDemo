@@ -17,13 +17,13 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
         //定义collectionView的布局类型，流布局
         let layout = UICollectionViewFlowLayout()
         //设置cell的大小
-        layout.itemSize = CGSize(width: SCREEN_WIDTH/2, height: SCREEN_HEIGHT/3)
+        layout.itemSize = CGSize(width: SCREEN_WIDTH/2-10, height: SCREEN_HEIGHT/5)
         //滑动方向 默认方向是垂直
         layout.scrollDirection = .vertical
         //每个Item之间最小的间距
-        layout.minimumInteritemSpacing = 0
+        layout.minimumInteritemSpacing = 5
         //每行之间最小的间距  
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 5
         
         myCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT), collectionViewLayout: layout)
         myCollectionView.dataSource = self
@@ -44,17 +44,17 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:MyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as!MyCollectionViewCell
-//        let text = "HI"
-        let name = "ball"
-//        cell.setupView(text, imageName: name)
-        cell.myImageView.image = UIImage(named: name)
+        let text = String("\(indexPath.section)")
+        let name = "buttonImage.jpg"
+        cell.setupView(text!, imageName: name)
+//        cell.myImageView.image = UIImage(named: name)
         return cell;
     }
     
-//    //返回cell 上下左右的间距
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-//        return UIEdgeInsetsMake(5, 10, 5, 10)
-//    }
+    //返回cell 上下左右的间距
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+        return UIEdgeInsetsMake(5, 5, 5, 5)
+    }
     
     // #MARK: --UICollectionViewDelegate的代理方法
     /**

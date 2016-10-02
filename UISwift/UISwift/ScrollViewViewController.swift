@@ -43,7 +43,6 @@ class ScrollViewViewController: UIViewController {
             pageHeight = screenBounds().size.height-64;
             
             let scrollView = UIScrollView()
-            //            scrollView.backgroundColor = UIColor.redColor()
             scrollView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
             scrollView.contentSize = CGSize(width: pageWidth*tempNumOfPage, height: pageHeight)
             scrollView.isPagingEnabled = true
@@ -125,8 +124,6 @@ class pageViewController: UIViewController {
         numberLabel.font = UIFont.systemFont(ofSize: 23)
         self.view.addSubview(numberLabel)
         self.view.backgroundColor = colorMap[number]
-        //        self.view.backgroundColor = UIColor.orangeColor()
-        
         
     }
     

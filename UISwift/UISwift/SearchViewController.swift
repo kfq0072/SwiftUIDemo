@@ -14,16 +14,14 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
     @IBOutlet weak var mySearchView: UISearchBar!
     
     var reGesRecognizer:UIGestureRecognizer!
-    var ctrls:[String] = ["Lable","Button","Switch","Button2"]
+    var ctrls:[String] = ["Label","Button","Switch","Button","Label1","Button1","Switch1","Button1","Label2","Button2","Switch2","Button2","Label3","Button3","Switch3","Button3","Label4","Button4","Switch4","Button4"]
     var ctrlsel:[String] = [];
-    
-//    var ctrls:Array<String> = ["Lable","Button","Switch","Button2"]
-//    var ctrlsel:[String] = [];
     
     override func viewDidLoad() {
         self.mySearchView.delegate = self
         self.mySearchView.placeholder = "please input your select"
         self.mySearchView.searchBarStyle = UISearchBarStyle.default
+        self.mySearchView.becomeFirstResponder()
         self.ctrlsel = self.ctrls;
         self.myTableView .register(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
         self.reGesRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.tapEdit(_:)))
@@ -35,7 +33,6 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identify = "swiftCell"
         let cell:UITableViewCell = tableView .dequeueReusableCell(withIdentifier: identify, for: indexPath)
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel?.text = self.ctrlsel[(indexPath as NSIndexPath).row]
         
         
@@ -53,12 +50,13 @@ class SearchViewController: UIViewController,UISearchBarDelegate,UITableViewData
         }else {
             self.ctrlsel = []
             for ctrl in self.ctrls {
-                print(ctrl.lowercased())
-                print(searchText)
-                print(self.ctrlsel)
-//                if ((ctrl.lowercaseString.hasPrefix(searchText)) || (searchText.lowercaseString.hasPrefix(ctrl))) {
-                    self.ctrlsel.append(searchText)
-//                }
+                print("search:\(searchText) ctrl:\(ctrl.lowercased())")
+                let searchTextLower = searchText.lowercased()
+                let ctrlLower = ctrl.lowercased()
+                
+                if (ctrlLower.hasPrefix(searchTextLower)) {
+                    self.ctrlsel.append(ctrl)
+                }
             }
         }
         self.myTableView.reloadData()

@@ -10,19 +10,27 @@ import UIKit
 
 class TabBarViewController: UIViewController,UITabBarDelegate {
     var tabs = ["公开课","全栈课","设置"]
+    let tabImages = ["tuan","wang","me"];
     var tabBar:UITabBar!
     var contentView:UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.translucent = false;
         
         tabBar = UITabBar(frame: CGRect(x: 0,y: self.view.bounds.height-49,width: self.view.bounds.width,height: 49))
         var items :[UITabBarItem] = []
-        for tab in tabs {
+        for index in 0...2 {
             let tabBarItem = UITabBarItem()
-            tabBarItem.title = tab
+            tabBarItem.title = tabs[index]
+            
+            var tabBarItemImage = UIImage(named: tabImages[index])
+            tabBarItemImage = tabBarItemImage?.withRenderingMode(.alwaysOriginal);
+            tabBarItem.image = tabBarItemImage
+            
+            var tabBarItemSelectImage =  UIImage(named: "\(tabImages[index])_select")
+            tabBarItemSelectImage = tabBarItemSelectImage?.withRenderingMode(.alwaysOriginal)
+            tabBarItem.selectedImage = tabBarItemSelectImage
             items.append(tabBarItem)
         }
         tabBar.setItems(items, animated: true)

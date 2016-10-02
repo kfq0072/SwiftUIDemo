@@ -39,7 +39,8 @@ class webViewViewController: UIViewController,UISearchBarDelegate,UIWebViewDeleg
         super.viewDidLoad()
         activity.isHidden = true
         searchBar.delegate = self
-        searchBar.barTintColor = UIColor.white
+        searchBar.barTintColor = UIColor.orange
+        searchBar.placeholder = "请输入网址"
         webView.delegate = self
     }
 
