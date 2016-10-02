@@ -29,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         self.uiNameArray = ["base","datePick","webView","searchVC",
             "SearchDisplay","scrollView","coreMotion","tabBar",
-            "tabBarController","collectView"]
+            "tabBarController","collectView","tableView"]
 
         self.mainTableView!.register(UITableViewCell.self, forCellReuseIdentifier: "swiftCell")
         
@@ -70,7 +70,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         switch (indexPath as NSIndexPath).row {
         case 0:
              baseVCName = "baseVC"
-           
         case 1:
              baseVCName = "datePick"
         case 2:
@@ -89,6 +88,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             baseVCName = "tabBarController"
         case 9:
             baseVCName = "collectVC"
+        case 10:
+            baseVCName = "tableViewVC"
         default:
              baseVCName = "baseVC"
         }
