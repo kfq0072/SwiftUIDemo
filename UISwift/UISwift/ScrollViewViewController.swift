@@ -121,7 +121,7 @@ class pageViewController: UIViewController {
         super.viewDidLoad()
         
         let numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        numberLabel.text = "第"+"\(number)"+"页"
+        numberLabel.text = "第"+"\(number!)"+"页"
         numberLabel.center = self.view.center
         numberLabel.font = UIFont.systemFont(ofSize: 23)
         self.view.addSubview(numberLabel)

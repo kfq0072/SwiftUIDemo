@@ -47,7 +47,6 @@ class SearchDisplayViewController: UIViewController {
         let cell:UITableViewCell = tableView .dequeueReusableCell(withIdentifier: identify, for: indexPath)
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel!.text = self.ctrlsel[(indexPath as NSIndexPath).row]
-        print("0000000")
         print(cell.textLabel!.text)
         return cell;
     }
@@ -61,17 +60,17 @@ class SearchDisplayViewController: UIViewController {
        self.searchText = searchText.lowercased()
         print("search")
         print(self.searchText)
-        searchCtrls(0)
+        searchCtrls(scope: 0)
     }
     
     //分段
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print(selectedScope)
-        searchCtrls(selectedScope)
+        searchCtrls(scope: selectedScope)
     }
     
     //
-    func searchCtrls(_ scope:Int) {
+    func searchCtrls(scope:Int) {
         if self.searchText == "" {
             self.ctrlsel = self.ctrls
 //            self.setEditing(true, animated: true)

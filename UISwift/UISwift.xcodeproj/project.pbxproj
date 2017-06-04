@@ -128,7 +128,6 @@
 		7528A07F1AD2283C00C015EF = {
 			isa = PBXGroup;
 			children = (
-				75E52C0E1D967DD50085F3E5 /* CoreMotion.framework */,
 				7528A08A1AD2283C00C015EF /* UISwift */,
 				7528A0A01AD2283D00C015EF /* UISwiftTests */,
 				7528A0891AD2283C00C015EF /* Products */,
@@ -167,6 +166,7 @@
 				7528A0941AD2283C00C015EF /* Images.xcassets */,
 				7528A0961AD2283C00C015EF /* LaunchScreen.xib */,
 				75264ABE1B806B3A00C29D17 /* Main.storyboard */,
+				75E8E1231E59CD0B00EC233F /* framework */,
 				7528A08B1AD2283C00C015EF /* Supporting Files */,
 			);
 			path = UISwift;
@@ -196,6 +196,14 @@
 				7528A0A21AD2283D00C015EF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75E8E1231E59CD0B00EC233F /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				75E52C0E1D967DD50085F3E5 /* CoreMotion.framework */,
+			);
+			path = framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -44,10 +44,9 @@ class MyCollectViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:MyCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as!MyCollectionViewCell
-        let text = String("\(indexPath.section)")
+        let text = String("\(indexPath.row)")
         let name = "buttonImage.jpg"
         cell.setupView(text!, imageName: name)
-//        cell.myImageView.image = UIImage(named: name)
         return cell;
     }
     
